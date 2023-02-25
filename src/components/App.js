@@ -41,14 +41,22 @@ class App extends Component {
     return (
       <div>
         <h2>Please leave feedback</h2>
-        <button onClick={this.handleClickGood}>{options[0]}</button>
-        <button onClick={this.handleClickNeutral}>{options[1]}</button>
-        <button onClick={this.handleClickBad}>{options[2]}</button>
+        <div>
+          <button onClick={this.handleClickGood}>{options[0]}</button>
+          <button onClick={this.handleClickNeutral}>{options[1]}</button>
+          <button onClick={this.handleClickBad}>{options[2]}</button>
+        </div>
         <h2>Statistics</h2>
-        <p>Good: {good}</p>
-        <p>Neutral: {neutral}</p>
-        <p>Bad: {bad}</p>
-        <p>Pisitive feedback: {this.countPositiveFeedbackPercentage()}%</p>
+        {this.countTotalFeedback() ? (
+          <div>
+            <p>Good: {good}</p>
+            <p>Neutral: {neutral}</p>
+            <p>Bad: {bad}</p>
+            <p>Pisitive feedback: {this.countPositiveFeedbackPercentage()}%</p>
+          </div>
+        ) : (
+          <p>No feedback given</p>
+        )}
       </div>
     );
   }
